@@ -1,0 +1,28 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "protos"
+version = "0.1.0"
+description = "Protocols for services"
+authors = [
+    {name = "Kirill Sumorokov", email = "sumorokov.k@gmail.com"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+
+requires-python = ">=3.11"
+
+dependencies = [
+    "grpcio>=1.64.0",
+    "protobuf>=5.27.0",
+    "grpcio-tools>=1.64.0",
+    "mypy-protobuf>=3.6.0",
+]
+
+[tool.pdm.scripts]
+generate_passport.cmd = 'python -m grpc_tools.protoc -Iprotos/passport=protos --python_out=./src --grpc_python_out=./src --mypy_out=./src protos/passport.proto'
+
+[tool.pdm]
+distribution = true

@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package wallet;
+
+service WalletService {
+    // Queries
+    rpc get_accounts (google.protobuf.Empty) returns (stream AccountResponse) {}
+    rpc get_operations (GetOperationsRequest) returns (stream OperationResponse) {}
+    rpc get_tags (google.protobuf.Empty) returns (stream TagResponse) {}
+
+    // Account commands
+    rpc create_account (CreateAccountRequest) returns (AccountResponse) {}
+    rpc rename_account (RenameAccountRequest) returns (AccountResponse) {}
+    rpc remove_account (RemoveAccountRequest) returns (AccountResponse) {}
+
+    // Operation commands
+    rpc add_operation (AddOperationRequest) returns (OperationResponse) {}
+    rpc remove_operation (RemoveOperationRequest) returns (OperationResponse) {}
+}
+
+service ReportService {
+    // Queries
+    rpc get_latest_operations (GetLatestOperationRequest) returns (stream OperationResponse) {}
+}
+
+message Error {
+    enum Code {
+        ACCOUNT_ALREADY_EXIST = 0;
+        ACCOUNT_NOT_FOUND = 1;
+    }
+
+    Code code = 1;
+    string message = 2;
+}
+
+message Balance {
+    string expenses = 1;
+    string incomes = 2;
+}
+
+message Account {
+    enum Status {
+        ACTIVE = 0;
+        ARCHIVE = 1;
+    }
+
+    string id = 1;
+    string name = 2;
+    Balance balance = 3;
+    Status status = 4;
+    google.protobuf.Timestamp created_at = 5;
+}
+
+message Tag {
+    string id = 1;
+    string value = 2;
+}
+
+enum OperationType {
+    EXPENSE = 0;
+    INCOME = 1;
+}
+
+message Operation {
+    string id = 1;
+    string amount = 2;
+    string description = 3;
+    OperationType operation_type = 4;
+    repeated string tags = 5;
+    string account_id = 6;
+    google.protobuf.Timestamp created_at = 7;
+}
+
+message AccountResponse {
+    Account account = 1;
+}
+
+message TagResponse {
+    Tag tag = 1;
+}
+
+message OperationResponse {
+    Operation operation = 1;
+}
+
+message GetOperationsRequest {
+    string account_id = 1;
+}
+
+message CreateAccountRequest {
+    string name = 1;
+}
+
+message RenameAccountRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message RemoveAccountRequest {
+    string id = 1;
+}
+
+message AddOperationRequest {
+    string amount = 1;
+    string account_id = 2;
+    optional string description = 3;
+    optional OperationType operation_type = 4;
+    optional string created_at = 5;
+    repeated string tags = 6;
+}
+
+message RemoveOperationRequest {
+    string id = 1;
+}
+
+message GetLatestOperationRequest {
+    string account_id = 1;
+}

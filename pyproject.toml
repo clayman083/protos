@@ -29,6 +29,7 @@ format.composite = [
 ]
 lint = { composite = ["check_format", "check_ruff"] }
 generate_passport.cmd = 'python -m grpc_tools.protoc -Iprotos/passport=protos --python_out=./src --grpc_python_out=./src --mypy_out=./src protos/passport.proto'
+generate_wallet.cmd = 'python -m grpc_tools.protoc -Iprotos/wallet=protos --python_out=./src --grpc_python_out=./src --mypy_out=./src protos/wallet.proto'
 
 [tool.pdm.dev-dependencies]
 lint = ["mypy>=1.11.1", "ruff>=0.5.5"]

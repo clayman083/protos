@@ -3,42 +3,46 @@
 # source: protos/passport/passport.proto
 # Protobuf Python Version: 5.26.1
 """Generated protocol buffer code."""
+
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-
-
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1eprotos/passport/passport.proto\x12\x08passport\"\x83\x01\n\x05\x45rror\x12\"\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x14.passport.Error.Code\x12\x0f\n\x07message\x18\x02 \x01(\t\"E\n\x04\x43ode\x12\x12\n\x0eUSER_NOT_FOUND\x10\x00\x12\x16\n\x12USER_ALREADY_EXIST\x10\x01\x12\x11\n\rINVALID_TOKEN\x10\x02\"!\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"2\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"\\\n\x10RegisterResponse\x12\x1e\n\x04user\x18\x01 \x01(\x0b\x32\x0e.passport.UserH\x00\x12 \n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.passport.ErrorH\x00\x42\x06\n\x04Type\"/\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"\x1e\n\rLoginResponse\x12\r\n\x05token\x18\x01 \x01(\t\" \n\x0fIdentifyRequest\x12\r\n\x05token\x18\x01 \x01(\t\"\\\n\x10IdentifyResponse\x12\x1e\n\x04user\x18\x01 \x01(\x0b\x32\x0e.passport.UserH\x00\x12 \n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.passport.ErrorH\x00\x42\x06\n\x04Type2\xd3\x01\n\x0b\x41uthService\x12\x43\n\x08register\x12\x19.passport.RegisterRequest\x1a\x1a.passport.RegisterResponse\"\x00\x12:\n\x05login\x12\x16.passport.LoginRequest\x1a\x17.passport.LoginResponse\"\x00\x12\x43\n\x08identify\x12\x19.passport.IdentifyRequest\x1a\x1a.passport.IdentifyResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x1eprotos/passport/passport.proto\x12\x08passport"\x83\x01\n\x05\x45rror\x12"\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x14.passport.Error.Code\x12\x0f\n\x07message\x18\x02 \x01(\t"E\n\x04\x43ode\x12\x12\n\x0eUSER_NOT_FOUND\x10\x00\x12\x16\n\x12USER_ALREADY_EXIST\x10\x01\x12\x11\n\rINVALID_TOKEN\x10\x02"!\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t"2\n\x0fRegisterRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t"\\\n\x10RegisterResponse\x12\x1e\n\x04user\x18\x01 \x01(\x0b\x32\x0e.passport.UserH\x00\x12 \n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.passport.ErrorH\x00\x42\x06\n\x04Type"/\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t"\x1e\n\rLoginResponse\x12\r\n\x05token\x18\x01 \x01(\t" \n\x0fIdentifyRequest\x12\r\n\x05token\x18\x01 \x01(\t"\\\n\x10IdentifyResponse\x12\x1e\n\x04user\x18\x01 \x01(\x0b\x32\x0e.passport.UserH\x00\x12 \n\x05\x65rror\x18\x02 \x01(\x0b\x32\x0f.passport.ErrorH\x00\x42\x06\n\x04Type2\xd3\x01\n\x0b\x41uthService\x12\x43\n\x08register\x12\x19.passport.RegisterRequest\x1a\x1a.passport.RegisterResponse"\x00\x12:\n\x05login\x12\x16.passport.LoginRequest\x1a\x17.passport.LoginResponse"\x00\x12\x43\n\x08identify\x12\x19.passport.IdentifyRequest\x1a\x1a.passport.IdentifyResponse"\x00\x62\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'protos.passport.passport_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(
+    DESCRIPTOR, "protos.passport.passport_pb2", _globals
+)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
-  _globals['_ERROR']._serialized_start=45
-  _globals['_ERROR']._serialized_end=176
-  _globals['_ERROR_CODE']._serialized_start=107
-  _globals['_ERROR_CODE']._serialized_end=176
-  _globals['_USER']._serialized_start=178
-  _globals['_USER']._serialized_end=211
-  _globals['_REGISTERREQUEST']._serialized_start=213
-  _globals['_REGISTERREQUEST']._serialized_end=263
-  _globals['_REGISTERRESPONSE']._serialized_start=265
-  _globals['_REGISTERRESPONSE']._serialized_end=357
-  _globals['_LOGINREQUEST']._serialized_start=359
-  _globals['_LOGINREQUEST']._serialized_end=406
-  _globals['_LOGINRESPONSE']._serialized_start=408
-  _globals['_LOGINRESPONSE']._serialized_end=438
-  _globals['_IDENTIFYREQUEST']._serialized_start=440
-  _globals['_IDENTIFYREQUEST']._serialized_end=472
-  _globals['_IDENTIFYRESPONSE']._serialized_start=474
-  _globals['_IDENTIFYRESPONSE']._serialized_end=566
-  _globals['_AUTHSERVICE']._serialized_start=569
-  _globals['_AUTHSERVICE']._serialized_end=780
+    DESCRIPTOR._loaded_options = None
+    _globals["_ERROR"]._serialized_start = 45
+    _globals["_ERROR"]._serialized_end = 176
+    _globals["_ERROR_CODE"]._serialized_start = 107
+    _globals["_ERROR_CODE"]._serialized_end = 176
+    _globals["_USER"]._serialized_start = 178
+    _globals["_USER"]._serialized_end = 211
+    _globals["_REGISTERREQUEST"]._serialized_start = 213
+    _globals["_REGISTERREQUEST"]._serialized_end = 263
+    _globals["_REGISTERRESPONSE"]._serialized_start = 265
+    _globals["_REGISTERRESPONSE"]._serialized_end = 357
+    _globals["_LOGINREQUEST"]._serialized_start = 359
+    _globals["_LOGINREQUEST"]._serialized_end = 406
+    _globals["_LOGINRESPONSE"]._serialized_start = 408
+    _globals["_LOGINRESPONSE"]._serialized_end = 438
+    _globals["_IDENTIFYREQUEST"]._serialized_start = 440
+    _globals["_IDENTIFYREQUEST"]._serialized_end = 472
+    _globals["_IDENTIFYRESPONSE"]._serialized_start = 474
+    _globals["_IDENTIFYRESPONSE"]._serialized_end = 566
+    _globals["_AUTHSERVICE"]._serialized_start = 569
+    _globals["_AUTHSERVICE"]._serialized_end = 780
 # @@protoc_insertion_point(module_scope)

@@ -4,11 +4,12 @@ isort:skip_file
 """
 
 import builtins
+import sys
+import typing
+
 import google.protobuf.descriptor
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
-import sys
-import typing
 
 if sys.version_info >= (3, 10):
     import typing as typing_extensions
@@ -25,7 +26,12 @@ class Error(google.protobuf.message.Message):
         ValueType = typing.NewType("ValueType", builtins.int)
         V: typing_extensions.TypeAlias = ValueType
 
-    class _CodeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[Error._Code.ValueType], builtins.type):
+    class _CodeEnumTypeWrapper(
+        google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[
+            Error._Code.ValueType
+        ],
+        builtins.type,
+    ):
         DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
         USER_NOT_FOUND: Error._Code.ValueType  # 0
         USER_ALREADY_EXIST: Error._Code.ValueType  # 1
@@ -46,7 +52,9 @@ class Error(google.protobuf.message.Message):
         code: global___Error.Code.ValueType = ...,
         message: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["code", b"code", "message", b"message"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["code", b"code", "message", b"message"]
+    ) -> None: ...
 
 global___Error = Error
 
@@ -64,7 +72,9 @@ class User(google.protobuf.message.Message):
         id: builtins.str = ...,
         email: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["email", b"email", "id", b"id"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["email", b"email", "id", b"id"]
+    ) -> None: ...
 
 global___User = User
 
@@ -82,7 +92,9 @@ class RegisterRequest(google.protobuf.message.Message):
         email: builtins.str = ...,
         password: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["email", b"email", "password", b"password"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["email", b"email", "password", b"password"]
+    ) -> None: ...
 
 global___RegisterRequest = RegisterRequest
 
@@ -102,9 +114,17 @@ class RegisterResponse(google.protobuf.message.Message):
         user: global___User | None = ...,
         error: global___Error | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["Type", b"Type"]) -> typing.Literal["user", "error"] | None: ...
+    def HasField(
+        self,
+        field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"],
+    ) -> builtins.bool: ...
+    def ClearField(
+        self,
+        field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"],
+    ) -> None: ...
+    def WhichOneof(
+        self, oneof_group: typing.Literal["Type", b"Type"]
+    ) -> typing.Literal["user", "error"] | None: ...
 
 global___RegisterResponse = RegisterResponse
 
@@ -122,7 +142,9 @@ class LoginRequest(google.protobuf.message.Message):
         email: builtins.str = ...,
         password: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["email", b"email", "password", b"password"]) -> None: ...
+    def ClearField(
+        self, field_name: typing.Literal["email", b"email", "password", b"password"]
+    ) -> None: ...
 
 global___LoginRequest = LoginRequest
 
@@ -172,8 +194,16 @@ class IdentifyResponse(google.protobuf.message.Message):
         user: global___User | None = ...,
         error: global___Error | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["Type", b"Type"]) -> typing.Literal["user", "error"] | None: ...
+    def HasField(
+        self,
+        field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"],
+    ) -> builtins.bool: ...
+    def ClearField(
+        self,
+        field_name: typing.Literal["Type", b"Type", "error", b"error", "user", b"user"],
+    ) -> None: ...
+    def WhichOneof(
+        self, oneof_group: typing.Literal["Type", b"Type"]
+    ) -> typing.Literal["user", "error"] | None: ...
 
 global___IdentifyResponse = IdentifyResponse

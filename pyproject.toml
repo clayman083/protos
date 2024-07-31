@@ -6,10 +6,8 @@ build-backend = "pdm.backend"
 name = "protos"
 version = "0.1.0"
 description = "Protocols for services"
-authors = [
-    {name = "Kirill Sumorokov", email = "sumorokov.k@gmail.com"},
-]
-license = {text = "MIT"}
+authors = [{ name = "Kirill Sumorokov", email = "sumorokov.k@gmail.com" }]
+license = { text = "MIT" }
 readme = "README.md"
 
 requires-python = ">=3.11"
@@ -22,7 +20,86 @@ dependencies = [
 ]
 
 [tool.pdm.scripts]
+check_format.cmd = "ruff format --check --diff src/protos"
+check_mypy.cmd = "mypy src/protos"
+check_ruff.cmd = "ruff check --output-format=full --no-fix src/protos"
+format.composite = [
+    "ruff check --select I --fix src/protos",
+    "ruff format src/protos",
+]
+lint = { composite = ["check_format", "check_ruff"] }
 generate_passport.cmd = 'python -m grpc_tools.protoc -Iprotos/passport=protos --python_out=./src --grpc_python_out=./src --mypy_out=./src protos/passport.proto'
+
+[tool.pdm.dev-dependencies]
+lint = ["mypy>=1.11.1", "ruff>=0.5.5"]
 
 [tool.pdm]
 distribution = true
+
+# Mypy config
+[tool.mypy]
+strict = true
+python_version = "3.12"
+
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.ruff]
+exclude = ['.venv']
+line-length = 88
+respect-gitignore = true
+src = ["src", "tests"]
+target-version = "py312"
+
+[tool.ruff.lint]
+ignore = [
+    "D100",   # Missing docstring in public module
+    "D104",   # Missing docstring in public package
+    "D107",   # Missing docstring in __init__
+    "PT004",
+    "SIM108",
+]
+select = [
+    # "E", # pycodestyle errors
+    # "W", # pycodestyle warnings
+    # "D",   # pydocstyle
+    # "F",   # pyflakes
+    "C90", # mccabe
+    "C4",  # flake8-comprehensions
+    # "B",    # flake8-bugbear
+    "Q",   # flake8-quotes
+    "T20", # flake8-print
+    "PT",  # flake8-pytest-style
+    "RET", # flake8-return
+    "SIM", # flake8-simplify
+    # "ERA", # eradicate
+]
+unfixable = ['T201']
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = true
+mark-parentheses = true
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+known-first-party = ["wallet", "tests"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# Pyright config
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
